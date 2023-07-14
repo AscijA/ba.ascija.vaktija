@@ -4,18 +4,20 @@
     "beforeBuildCommand": "npm run build",
     "devPath": "http://localhost:1420",
     "distDir": "../dist",
-    "withGlobalTauri": false
+    "withGlobalTauri": true
   },
   "package": {
-    "productName": "baascijavaktija",
-    "version": "0.0.0"
+    "productName": "Vaktija",
+    "version": "1.0.0"
   },
   "tauri": {
     "allowlist": {
-      "all": false,
-      "shell": {
-        "all": false,
-        "open": true
+      "http": {
+        "all": true,
+        "request": true,
+        "scope": [
+          "https://vaktija.eu/*"
+        ]
       }
     },
     "bundle": {
@@ -28,18 +30,21 @@
         "icons/128x128@2x.png",
         "icons/icon.icns",
         "icons/icon.ico"
-      ]
+      ],
+      "deb": {
+        "files": {
+          "/usr/share/README.md": "../README.md"
+        }
+      }
     },
-    "security": {
-      "csp": null
-    },
+    "security": {},
     "windows": [
       {
         "fullscreen": false,
-        "resizable": true,
-        "title": "baascijavaktija",
-        "width": 800,
-        "height": 600
+        "resizable": false,
+        "title": "Vaktija by AscijA",
+        "width": 500,
+        "height": 850
       }
     ]
   }

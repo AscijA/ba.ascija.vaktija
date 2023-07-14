@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import style from "./MainContainer.module.css";
 import PrayerItem from './PrayerItem/PrayerItem.jsx';
 
-// import Intl from 'intl';
-// import 'intl/locale-data/jsonp/bs-Latn-BA';
-// import 'intl/locale-data/jsonp/en';
+import Intl from 'intl';
+import 'intl/locale-data/jsonp/bs-Latn-BA';
+import 'intl/locale-data/jsonp/en';
 
 import { labels, getVaktijaData, generateTimePhrase, findTimeIndex } from '../util.js';
 
@@ -15,6 +15,7 @@ const MainContainer = () => {
 
   useEffect(() => {
     getVaktijaData(setData);
+
     // update clock every minute
     setInterval(() => setDateTime(oldDateTime => {
       const newDateTime = new Date();
@@ -30,11 +31,11 @@ const MainContainer = () => {
     }, 60000);
   }, []);
 
-  // const dateFormat = new Intl.DateTimeFormat('bs', { weekday: "long", day: 'numeric', month: 'long', year: 'numeric' });
+  const dateFormat = new Intl.DateTimeFormat('bs', { weekday: "long", day: 'numeric', month: 'long', year: 'numeric' });
 
   let clock = dateTime.toLocaleString('de', { hour: "2-digit", minute: "2-digit" }).toLocaleUpperCase();
-  // let date = dateFormat.format(dateTime).toLocaleUpperCase();
-  let date = dateTime.toLocaleString();
+  let date = dateFormat.format(dateTime).toLocaleUpperCase();
+  // let date = dateTime.toLocaleString();
   let islamic = dateTime.toLocaleString('bs-u-ca-islamic', { day: "2-digit", calendar: "islamic" }).toLocaleUpperCase() + " " + dateTime.toLocaleString('en', { month: 'long', calendar: "islamic" }).toLocaleUpperCase();
 
   let list = [];
@@ -50,7 +51,6 @@ const MainContainer = () => {
       <div className={ style.date }>{ date }</div>
       <div className={ `${style.date} ${style.border}` }>{ islamic }</div>
       { list }
-
     </div>
   );
 };

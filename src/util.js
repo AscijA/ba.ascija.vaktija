@@ -1,4 +1,5 @@
-import axios from 'axios';
+import { invoke } from '@tauri-apps/api/tauri';
+// const invoke = window.__TAURI__.invoke
 
 // Default Labels 
 let labels = {
@@ -25,13 +26,7 @@ let labels = {
 * @param {callback} setterFunction : function that will update some data
 */
 const getVaktijaData = async (setterFunction) => {
-  axios.get(`https://vaktija.eu/graz`)
-    .then(response => {
-      const data = response.data;
-      setterFunction(extractDailyPrayers(data));
-    }).catch((e) => {
-      console.log(e);
-    });
+  invoke('make_http_request', { url: 'https://vaktija.eu/graz' }).then((message) => { setterFunction(extractDailyPrayers(message.body)); });
 };
 
 /**

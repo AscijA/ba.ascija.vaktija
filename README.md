@@ -1,6 +1,6 @@
 # ba.ascija.vaktija
 
-Unofficial port of [Vaktija.eu](https://vaktija.eu/) for Linux written in Electron/ReactJS
+Unofficial port of [Vaktija.eu](https://vaktija.eu/) for Linux written in Tauri/ReactJS
 
 ## License
 
