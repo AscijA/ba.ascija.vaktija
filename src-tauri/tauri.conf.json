@@ -7,8 +7,7 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "Vaktija",
-    "version": "1.0.0"
+    "productName": "Vaktija"
   },
   "tauri": {
     "allowlist": {
@@ -23,7 +22,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.tauri.dev",
+      "identifier": "ba.ascija.vaktija",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
@@ -46,6 +45,10 @@
         "width": 500,
         "height": 850
       }
-    ]
+    ],
+    "systemTray": {
+      "iconPath": "icons/icon.png",
+      "iconAsTemplate": true
+    }
   }
 }

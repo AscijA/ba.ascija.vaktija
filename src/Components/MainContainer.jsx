@@ -41,7 +41,7 @@ const MainContainer = () => {
   let list = [];
   const diffList = findTimeIndex(data);
   for (const key in data) {
-    const timePhrase = generateTimePhrase(diffList.diff[key]);
+    let timePhrase = generateTimePhrase(diffList.diff[key]);
     list.push(<PrayerItem key={ key } prayerName={ labels.prayers[key] } prayerTime={ data[key] } timePhrase={ timePhrase } isCurrent={ diffList.index == key } />);
   }
   return (
