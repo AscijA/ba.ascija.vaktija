@@ -1,0 +1,11 @@
+.prayerItem {
+  display: flex;
+  flex-direction: column;
+  font-size: 32px;
+  opacity: 50%;
+}
+
+.currentPrayer {
+  opacity: 100%;
+  font-weight: bold;
+}

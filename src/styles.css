@@ -1,0 +1,14 @@
+ body {
+  font-family: "Poppins", sans-serif;
+  margin: auto;
+  max-width: 38rem;
+  padding: 2rem;
+  padding-top: 1rem;
+  background-color: #57BEAD;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 750px;
+}
+

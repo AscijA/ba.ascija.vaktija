@@ -1,0 +1,25 @@
+.mainContainer {
+  background-color: #57BEAD;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 44px;
+}
+
+.clock {
+  font-size: 32px;
+}
+
+.date {
+  font-size: 24px;
+}
+
+.border {
+  text-align: center;
+  width: 225px;
+  border-bottom: 2px solid white;
+  margin-bottom: 8px;
+}
