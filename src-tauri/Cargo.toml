@@ -1,6 +1,6 @@
 [package]
 name = "ba-ascija-vaktija"
-version = "1.0.1"
+version = "1.0.2"
 description = "Unofficial port of Vaktija.eu for Linux"
 authors = ["AscijA"]
 license = "GPL 3.0"

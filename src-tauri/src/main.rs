@@ -115,6 +115,14 @@ fn main() {
     tauri::Builder::default()
         .system_tray(system_tray)
         .on_system_tray_event(|app, event| match event {
+            SystemTrayEvent::LeftClick {
+                position: _,
+                size: _,
+                ..
+            } => {
+                let window = app.get_window("main").unwrap();
+                window.show().unwrap();
+            }
 
             SystemTrayEvent::MenuItemClick { id, .. } => match id.as_str() {
                 "quit" => {
