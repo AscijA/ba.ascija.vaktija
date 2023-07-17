@@ -25,8 +25,12 @@ let labels = {
 * 
 * @param {callback} setterFunction : function that will update some data
 */
-const getVaktijaData = async (setterFunction) => {
-  invoke('make_http_request', { url: 'https://vaktija.eu/graz' }).then((message) => { setterFunction(extractDailyPrayers(message.body)); });
+const getVaktijaData = async (setterFunction, location) => {
+  invoke('make_http_request', { url: `https://vaktija.eu/${location.toLowerCase()}` })
+    .then((message) => { setterFunction(extractDailyPrayers(message.body)); })
+    .catch((error) => {
+      console.error(error);
+    });
 };
 
 /**
@@ -105,6 +109,27 @@ const findTimeIndex = (data) => {
   }
   return retVal;
 };
+
+/** 
+ * Retrieves saved settings from local storage
+ *  
+ * @returns {object} : Key value pairs of settings
+ */
+const getSettings = () => {
+  const settings = localStorage.getItem('settings');
+  return settings ? JSON.parse(settings) : {};
+};
+
+/**
+ *  Saves the settings to local storage
+ * 
+ * @param {object} settings 
+ */
+const saveSettings = (settings) => {
+  localStorage.setItem('settings', JSON.stringify(settings));
+};
+
+export { getSettings, saveSettings };
 
 // module.exports = { getVaktijaData, generateTimePhrase, extractDailyPrayers, findTimeIndex };
 export { labels, getVaktijaData, generateTimePhrase, extractDailyPrayers, findTimeIndex };

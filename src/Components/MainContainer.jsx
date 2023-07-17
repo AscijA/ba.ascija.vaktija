@@ -1,42 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import style from "./MainContainer.module.css";
 import PrayerItem from './PrayerItem/PrayerItem.jsx';
+import DateTime from './DateTime/DateTime.jsx';
 
-import Intl from 'intl';
-import 'intl/locale-data/jsonp/bs-Latn-BA';
-import 'intl/locale-data/jsonp/en';
-
-import { labels, getVaktijaData, generateTimePhrase, findTimeIndex } from '../util.js';
+import { labels, getVaktijaData, generateTimePhrase, findTimeIndex, getSettings, saveSettings } from '../util.js';
+import { event } from '@tauri-apps/api';
 
 const MainContainer = () => {
-  const [dateTime, setDateTime] = useState(new Date());
-  const [location, setLocation] = useState("Graz");
+  const [settings, setSettings] = useState(getSettings());
+  const [location, setLocation] = useState(settings.location);
   const [data, setData] = useState([]);
 
+  /**
+   * Update settings state 
+   * @param {event} event 
+   */
+  const handleLocationChange = (event) => {
+    const { name, value } = event.target;
+    setSettings((prevSettings) => ({ ...prevSettings, [name]: value }));
+    setLocation(value);
+  };
+
+  /**
+   * Save settings to local storage
+   */
+  const handleSave = () => {
+    saveSettings(settings);
+    getVaktijaData(setData, location);
+  };
+
   useEffect(() => {
-    getVaktijaData(setData);
-
-    // update clock every minute
-    setInterval(() => setDateTime(oldDateTime => {
-      const newDateTime = new Date();
-      return newDateTime.getMinutes() != oldDateTime.getMinutes() ? newDateTime : oldDateTime;
-    }), 1000);
-
-    // update vaktija data every day
-    setInterval(() => {
-      const newDateTime = new Date();
-      if (newDateTime.getDay() != dateTime.getDay()) {
-        getVaktijaData(setData);
-      }
-    }, 60000);
+    getVaktijaData(setData, location);
   }, []);
-
-  const dateFormat = new Intl.DateTimeFormat('bs', { weekday: "long", day: 'numeric', month: 'long', year: 'numeric' });
-
-  let clock = dateTime.toLocaleString('de', { hour: "2-digit", minute: "2-digit" }).toLocaleUpperCase();
-  let date = dateFormat.format(dateTime).toLocaleUpperCase();
-  // let date = dateTime.toLocaleString();
-  let islamic = dateTime.toLocaleString('bs-u-ca-islamic', { day: "2-digit", calendar: "islamic" }).toLocaleUpperCase() + " " + dateTime.toLocaleString('en', { month: 'long', calendar: "islamic" }).toLocaleUpperCase();
 
   let list = [];
   const diffList = findTimeIndex(data);
@@ -46,10 +41,9 @@ const MainContainer = () => {
   }
   return (
     <div className={ style.mainContainer }>
-      <div className={ style.title }>Vaktija - { location }</div>
-      <div className={ style.clock }>{ clock }</div>
-      <div className={ style.date }>{ date }</div>
-      <div className={ `${style.date} ${style.border}` }>{ islamic }</div>
+
+      <div className={ style.title }><input className={ style.titleLocation } type="text" name="location" id="loc" value={location} onChange={ handleLocationChange } onBlur={ handleSave } /></div>
+      <DateTime getVaktijaData={ () => { getVaktijaData(setData, location); } } />
       { list }
     </div>
   );
