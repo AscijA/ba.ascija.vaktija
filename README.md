@@ -1,6 +1,6 @@
 # ba.ascija.vaktija
 
-Unofficial port of [Vaktija.eu](https://vaktija.eu/) for Linux written in Tauri/ReactJS. Currently supports only Graz.
+Unofficial port of [Vaktija.eu](https://vaktija.eu/) for Linux written in Tauri/ReactJS.
 
 ![Vaktija ](public/ex.png)  
 ## License
