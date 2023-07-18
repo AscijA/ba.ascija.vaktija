@@ -25,3 +25,7 @@
 .titleLocation:focus {
   outline: none;
 }
+
+.title:hover{
+  cursor: pointer;
+}

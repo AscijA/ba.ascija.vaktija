@@ -1,0 +1,58 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.dropdown {
+  width: 50%;
+  height: 32px;
+  cursor: pointer;
+
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.modalButton {
+  text-align: center;
+  width: 75px;
+  padding: 4px;
+  border-radius: 8px;
+  cursor: pointer;
+
+}
+
+.save {
+  border: 1px solid black;
+}
+
+.cancle {
+  border: 1px solid red;
+  color: red;
+}
+
+.modalContent {
+  /* position: absolute; */
+  color: black;
+  /* top: 30%; */
+  background-color: white;
+  padding: 16px;
+  border-radius: 16px;
+  width: 250px;
+}
+
+.backdrop {
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
