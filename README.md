@@ -1,6 +1,6 @@
 # ba.ascija.vaktija
 
-Unofficial port of [Vaktija.eu](https://vaktija.eu/) for Linux written in Tauri/ReactJS.
+Unofficial port of [Vaktija.eu](https://vaktija.eu/) for desktop written in Tauri/ReactJS.
 
 ![Vaktija ](public/ex.png)  
 ## License
@@ -10,6 +10,24 @@ This program is licensed under the GNU General Public License version 3.0. For m
 ## Optional Requirements
 - [Poppins Font](https://fonts.google.com/specimen/Poppins)
   
+## Installation 
+#### Linux
+Download the binary. Run `sudo apt install vaktija_*.deb`.  
+Or alternatively use the provided AppImage.
+#### Windows 
+Download the installer and run it.
+#### MacOS
+See [Build from source](#building-from-source)
+
+## Building from source 
+
+#### Prerequisites
+[Tauri v1.4](https://tauri.app/v1/guides/getting-started/prerequisites)
+[NodeJS v16](https://nodejs.org/)
+Other dependencies should be automatically installed upon building.
+
+#### Build Process
+Run the `npm run tauri build` command. The binaries will be placed in `src-tauri/target/release`
 ## Acknowledgements
 
 This application is inspired by [Vaktija.eu](https://vaktija.eu/) and [Vaktija.ba](https://vaktija.ba/).
