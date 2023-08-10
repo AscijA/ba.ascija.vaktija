@@ -12,7 +12,7 @@ This program is licensed under the GNU General Public License version 3.0. For m
   
 ## Acknowledgements
 
-This extension is inspired by [Vaktija.eu](https://vaktija.eu/) and [Vaktija.ba](https://vaktija.ba/).
+This application is inspired by [Vaktija.eu](https://vaktija.eu/) and [Vaktija.ba](https://vaktija.ba/).
 Vectors and icons inpired by [SVGRepo](https://www.svgrepo.com/svg/48266/muslim-man-praying).
 
 ## Contact
